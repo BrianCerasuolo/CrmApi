@@ -2,12 +2,15 @@
 using Owin;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Dependencies;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using MyNamespace;
+using Crm.Di;
 
 [assembly: OwinStartup(typeof(CrmApi.Startup))]
 namespace CrmApi
@@ -18,6 +21,7 @@ namespace CrmApi
         {
             ConfigureOAuth(app);
             HttpConfiguration config = new HttpConfiguration();
+            config.DependencyResolver = new NinjectResolver(NinjectConfig.CreateKernel());
             WebApiConfig.Register(config);
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
