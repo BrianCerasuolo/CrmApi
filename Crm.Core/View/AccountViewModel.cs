@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Crm.Core.Domain;
 
-namespace Crm.Core.Domain
+namespace Crm.Core.View
 {
-    public class Account : Entity<int>
+    public class AccountViewModel : Entity<int>
     {
         public string Name { get; set; }
         public string Guid { get; set; }

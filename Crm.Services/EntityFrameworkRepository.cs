@@ -16,19 +16,19 @@ namespace Crm.Services
         {
         }
 
-        public virtual void Create<TEntity>(TEntity entity, string createdBy = null)
+        public virtual void Create<TEntity>(TEntity entity, int createdBy = 0)
         where TEntity : class, IEntity
         {
             entity.CreatedDate = DateTime.UtcNow;
-            entity.CreatedBy = createdBy;
+            entity.CreatedById = createdBy;
             context.Set<TEntity>().Add(entity);
         }
 
-        public virtual void Update<TEntity>(TEntity entity, string modifiedBy = null)
+        public virtual void Update<TEntity>(TEntity entity, int modifiedBy = 0)
             where TEntity : class, IEntity
         {
             entity.ModifiedDate = DateTime.UtcNow;
-            entity.ModifiedBy = modifiedBy;
+            entity.ModifiedById = modifiedBy;
             context.Set<TEntity>().Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
         }

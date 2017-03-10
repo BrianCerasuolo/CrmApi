@@ -20,7 +20,7 @@ namespace Crm.Core.Domain
             set { this.Id = (T)Convert.ChangeType(value, typeof(T)); }
         }
 
-        public string Name { get; set; }
+        //public string Name { get; set; }
 
         private DateTime? _createdDate;
         [DataType(DataType.DateTime)]
@@ -33,11 +33,14 @@ namespace Crm.Core.Domain
         [DataType(DataType.DateTime)]
         public DateTime? ModifiedDate { get; set; }
 
-        public string CreatedBy { get; set; }
+        public int CreatedById { get; set; }
 
-        public string ModifiedBy { get; set; }
+        public int ModifiedById { get; set; }
 
-        [Timestamp]
-        public byte[] Version { get; set; }
+        public int TenantId { get; set; }
+
+        public bool IsActive { get; set; }
+        //[Timestamp]
+        //public byte[] Version { get; set; }
     }
 }

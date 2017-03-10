@@ -7,6 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Dependencies;
+using AutoMapper;
+using Crm.Core.Domain;
+using Crm.Core.View;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using MyNamespace;
@@ -25,6 +28,11 @@ namespace CrmApi
             WebApiConfig.Register(config);
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Account, AccountViewModel>().ReverseMap();
+            });
         }
 
         private void ConfigureOAuth(IAppBuilder app)

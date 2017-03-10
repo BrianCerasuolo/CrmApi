@@ -8,7 +8,9 @@ namespace Crm.Core.Interface
 {
     public interface IModifiableEntity
     {
-        string Name { get; set; }
+        //string Name { get; set; }
+        bool IsActive { get; set; }
+        int TenantId { get; set; }
     }
 
     public interface IEntity : IModifiableEntity
@@ -16,9 +18,10 @@ namespace Crm.Core.Interface
         object Id { get; set; }
         DateTime CreatedDate { get; set; }
         DateTime? ModifiedDate { get; set; }
-        string CreatedBy { get; set; }
-        string ModifiedBy { get; set; }
-        byte[] Version { get; set; }
+        int CreatedById { get; set; }
+        int ModifiedById { get; set; }
+        //byte[] Version { get; set; }
+        
     }
 
     public interface IEntity<T> : IEntity

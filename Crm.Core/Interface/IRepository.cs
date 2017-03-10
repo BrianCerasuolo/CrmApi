@@ -10,10 +10,10 @@ namespace Crm.Core.Interface
 {
     public interface IRepository : IReadOnlyRepository
     {
-        void Create<TEntity>(TEntity entity, string createdBy = null)
+        void Create<TEntity>(TEntity entity, int createdBy = 0)
         where TEntity : class, IEntity;
 
-        void Update<TEntity>(TEntity entity, string modifiedBy = null)
+        void Update<TEntity>(TEntity entity, int modifiedBy = 0)
             where TEntity : class, IEntity;
 
         void Delete<TEntity>(object id)
